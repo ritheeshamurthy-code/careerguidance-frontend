@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Guidance System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ LANDING SCREEN ============ -->
+  <div id="screen-landing" class="screen active">
+    <div class="landing-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="landing-content">
+      <div class="brand-mark">CGS</div>
+      <h1 class="landing-title">
+        Discover your<br/>
+        <em>ideal career path</em>
+      </h1>
+      <p class="landing-sub">
+        Answer 15 thoughtful questions about your interests and strengths.<br/>
+        Get a personalised career recommendation based on your stream.
+      </p>
+      <button class="btn-primary" id="btn-start">
+        Begin Assessment
+        <span class="btn-arrow">→</span>
+      </button>
+      <div class="stream-chips">
+        <span class="chip">PCMC</span>
+        <span class="chip">PCMB</span>
+        <span class="chip">PCME</span>
+        <span class="chip">Commerce</span>
+        <span class="chip">Arts</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ STREAM SELECTION SCREEN ============ -->
+  <div id="screen-stream" class="screen">
+    <div class="top-bar">
+      <button class="btn-back" id="btn-back-stream">← Back</button>
+      <span class="top-bar-title">Select Your Stream</span>
+    </div>
+    <div class="stream-screen-content">
+      <h2 class="section-title">What stream are you in?</h2>
+      <p class="section-sub">Your questions will be tailored to your academic background.</p>
+      <div class="stream-grid" id="stream-grid">
+
+        <div class="stream-card" data-stream-id="1" data-stream-name="PCMC">
+          <div class="stream-icon">∑</div>
+          <div class="stream-card-label">PCMC</div>
+          <div class="stream-card-desc">Physics · Chemistry · Maths · Computer Sc.</div>
+        </div>
+
+        <div class="stream-card" data-stream-id="2" data-stream-name="PCMB">
+          <div class="stream-icon">⚗</div>
+          <div class="stream-card-label">PCMB</div>
+          <div class="stream-card-desc">Physics · Chemistry · Maths · Biology</div>
+        </div>
+
+        <div class="stream-card" data-stream-id="3" data-stream-name="PCME">
+          <div class="stream-icon">⚙</div>
+          <div class="stream-card-label">PCME</div>
+          <div class="stream-card-desc">Physics · Chemistry · Maths · Electronics</div>
+        </div>
+
+        <div class="stream-card" data-stream-id="4" data-stream-name="Commerce">
+          <div class="stream-icon">₹</div>
+          <div class="stream-card-label">Commerce</div>
+          <div class="stream-card-desc">Accountancy · Business Studies · Economics</div>
+        </div>
+
+        <div class="stream-card" data-stream-id="5" data-stream-name="Arts">
+          <div class="stream-icon">✦</div>
+          <div class="stream-card-label">Arts</div>
+          <div class="stream-card-desc">Humanities · Social Sciences · Languages</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PCMB FORK MODAL ============ -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-badge-row">
+        <span class="modal-badge">PCMB Student</span>
+      </div>
+      <h2 class="modal-title">Which direction excites you more?</h2>
+      <p class="modal-sub">
+        PCMB opens two distinct paths. Choose the one that feels right —
+        you can always come back and try the other.
+      </p>
+      <div class="fork-cards">
+
+        <button class="fork-card fork-bio" id="fork-biology">
+          <div class="fork-icon">🧬</div>
+          <div class="fork-info">
+            <div class="fork-label">Biology Path</div>
+            <div class="fork-desc">Medicine · Genetics · Pharmacy · Ecology</div>
+          </div>
+          <div class="fork-arrow">→</div>
+        </button>
+
+        <button class="fork-card fork-cs" id="fork-cs">
+          <div class="fork-icon">⌨</div>
+          <div class="fork-info">
+            <div class="fork-label">Computer Science Exploration</div>
+            <div class="fork-desc">Software · Data Science · Cybersecurity · Hardware</div>
+          </div>
+          <div class="fork-arrow">→</div>
+        </button>
+
+      </div>
+      <button class="modal-cancel" id="modal-cancel">← Go back to stream selection</button>
+    </div>
+  </div>
+
+  <!-- ============ QUIZ SCREEN ============ -->
+  <div id="screen-quiz" class="screen">
+    <div class="quiz-header">
+      <button class="btn-back" id="btn-back-quiz">← Back</button>
+      <div class="progress-wrap">
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="progress-label" id="progress-label">1 / 15</span>
+      </div>
+      <div class="stream-badge" id="quiz-stream-badge">PCMC</div>
+    </div>
+
+    <div class="quiz-body">
+      <div class="q-counter" id="q-counter">Question 1</div>
+      <h2 class="q-text" id="q-text">Loading question...</h2>
+
+      <div class="options-list" id="options-list">
+        <!-- Options injected by JS -->
+      </div>
+
+      <div class="quiz-nav">
+        <button class="btn-secondary" id="btn-prev" disabled>← Previous</button>
+        <button class="btn-primary" id="btn-next" disabled>
+          Next <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LOADING SCREEN ============ -->
+  <div id="screen-loading" class="screen">
+    <div class="loading-inner">
+      <div class="loader-ring"></div>
+      <p class="loading-text">Analysing your responses…</p>
+      <p class="loading-sub">Calculating career fit scores</p>
+    </div>
+  </div>
+
+  <!-- ============ RESULT SCREEN ============ -->
+  <div id="screen-result" class="screen">
+
+    <!-- Hero banner -->
+    <div class="result-header">
+      <div class="result-confetti" id="confetti-area"></div>
+      <div class="result-tag">Your Top Career Match</div>
+      <h1 class="result-career" id="result-career-title">Software Engineer</h1>
+      <p class="result-desc" id="result-career-desc"></p>
+      <div class="result-degree-pill" id="result-degree-pill"></div>
+    </div>
+
+    <div class="result-body">
+
+      <!-- Score bars -->
+      <h3 class="results-section-title">All Career Scores</h3>
+      <div class="score-bars" id="score-bars"></div>
+
+      <!-- Job roles section -->
+      <div class="job-roles-section" id="job-roles-section">
+        <div class="job-roles-header">
+          <h3 class="results-section-title">Roles You Can Pursue</h3>
+          <p class="job-roles-sub" id="job-roles-sub"></p>
+        </div>
+        <div class="job-roles-grid" id="job-roles-grid">
+          <!-- Cards injected by JS -->
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn-primary" id="btn-retake">
+          Retake Quiz <span class="btn-arrow">↺</span>
+        </button>
+        <button class="btn-secondary" id="btn-change-stream">Change Stream</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ERROR TOAST ============ -->
+  <div class="toast" id="toast">
+    <span id="toast-msg">Something went wrong.</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
